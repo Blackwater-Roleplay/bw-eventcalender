@@ -1,8 +1,14 @@
 const { Pool } = require('pg');
 
+// Railway setzt DATABASE_URL automatisch
+if (!process.env.DATABASE_URL) {
+    console.error('DATABASE_URL nicht gesetzt!');
+    process.exit(1);
+}
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+    ssl: { rejectUnauthorized: false }
 });
 
 // Tabellen erstellen beim Start
