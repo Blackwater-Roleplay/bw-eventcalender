@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-900 text-gray-100;
+}
+
+/* FullCalendar Dark Theme Overrides */
+.fc {
+    --fc-border-color: #374151;
+    --fc-button-bg-color: #dc2626;
+    --fc-button-border-color: #dc2626;
+    --fc-button-hover-bg-color: #b91c1c;
+    --fc-button-hover-border-color: #b91c1c;
+    --fc-button-active-bg-color: #991b1b;
+    --fc-button-active-border-color: #991b1b;
+    --fc-today-bg-color: rgba(220, 38, 38, 0.1);
+    --fc-page-bg-color: #111827;
+    --fc-neutral-bg-color: #1f2937;
+    --fc-list-event-hover-bg-color: #374151;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border-color: #374151;
+}
+
+.fc .fc-daygrid-day-number {
+    color: #e5e7eb;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: #e5e7eb;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(220, 38, 38, 0.1);
+}
+
+.fc-event {
+    cursor: pointer;
+    border: none;
+    padding: 2px 4px;
+}
+
+.fc .fc-button-primary:disabled {
+    background-color: #6b7280;
+    border-color: #6b7280;
+}
+
+.fc-toolbar-title {
+    color: #f3f4f6 !important;
+}
+
+.fc-daygrid-day-frame {
+    min-height: 100px;
+}
