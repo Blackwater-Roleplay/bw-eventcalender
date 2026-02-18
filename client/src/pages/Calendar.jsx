@@ -64,14 +64,14 @@ function Calendar() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900 p-4 md:p-8">
-            <header className="mb-8 text-center">
+        <div className="min-h-screen bg-gray-900 p-4 md:p-6">
+            <header className="mb-6 text-center">
                 <h1 className="text-3xl md:text-4xl font-bold text-white">
                     <span className="text-primary-500">Event</span> Kalender
                 </h1>
             </header>
 
-            <div className="max-w-6xl mx-auto bg-gray-800 rounded-lg p-4 md:p-6 shadow-xl">
+            <div className="max-w-screen-2xl mx-auto bg-gray-800 rounded-lg p-4 md:p-6 shadow-xl">
                 {loading ? (
                     <div className="flex justify-center items-center h-96">
                         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
