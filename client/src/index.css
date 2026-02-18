@@ -19,6 +19,7 @@ body {
     --fc-page-bg-color: #111827;
     --fc-neutral-bg-color: #1f2937;
     --fc-list-event-hover-bg-color: #374151;
+    --fc-small-font-size: 0.85em;
 }
 
 .fc-theme-standard .fc-scrollgrid {
@@ -27,20 +28,54 @@ body {
 
 .fc .fc-daygrid-day-number {
     color: #e5e7eb;
+    padding: 8px;
 }
 
 .fc .fc-col-header-cell-cushion {
     color: #e5e7eb;
+    padding: 10px;
 }
 
 .fc .fc-daygrid-day.fc-day-today {
     background-color: rgba(220, 38, 38, 0.1);
 }
 
+/* Event Styling */
 .fc-event {
     cursor: pointer;
-    border: none;
-    padding: 2px 4px;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 4px 6px !important;
+    margin: 2px 4px !important;
+    font-size: 0.8rem;
+}
+
+.fc-event-title {
+    font-weight: 500;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+.fc-event-time {
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+/* Day cell sizing */
+.fc .fc-daygrid-day-frame {
+    min-height: 120px;
+}
+
+.fc .fc-daygrid-day-events {
+    min-height: 80px;
+    padding: 2px;
+}
+
+/* Show more events link */
+.fc .fc-daygrid-more-link {
+    color: #dc2626;
+    font-weight: 600;
+    padding: 4px;
 }
 
 .fc .fc-button-primary:disabled {
@@ -52,6 +87,29 @@ body {
     color: #f3f4f6 !important;
 }
 
-.fc-daygrid-day-frame {
-    min-height: 100px;
+/* Popover for "more" events */
+.fc .fc-popover {
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+}
+
+.fc .fc-popover-header {
+    background: #374151;
+    color: #f3f4f6;
+    padding: 8px 12px;
+    border-radius: 8px 8px 0 0;
+}
+
+.fc .fc-popover-body {
+    padding: 8px;
+}
+
+/* Week view - better visibility */
+.fc-timegrid-event {
+    border-radius: 4px !important;
+}
+
+.fc-timegrid-event .fc-event-main {
+    padding: 4px;
 }

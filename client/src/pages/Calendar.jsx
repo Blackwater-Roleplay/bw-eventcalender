@@ -90,6 +90,24 @@ function Calendar() {
                         }}
                         height="auto"
                         eventDisplay="block"
+                        displayEventTime={true}
+                        eventTimeFormat={{
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false
+                        }}
+                        dayMaxEvents={4}
+                        moreLinkText={(num) => `+${num} mehr`}
+                        eventContent={(eventInfo) => (
+                            <div className="p-1 overflow-hidden">
+                                <div className="font-semibold text-xs">
+                                    {eventInfo.timeText}
+                                </div>
+                                <div className="text-xs truncate">
+                                    {eventInfo.event.title}
+                                </div>
+                            </div>
+                        )}
                     />
                 )}
             </div>
