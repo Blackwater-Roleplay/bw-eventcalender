@@ -77,12 +77,23 @@ router.post('/recurring', authMiddleware, async (req, res) => {
                     const eventDate = `${year}-${month}-${day}`;
 
                     // Zeit aus den vom Client konvertierten ISO-Strings extrahieren
-                    // Client sendet: { startISO: "2024-01-01T15:00:00.000Z", endISO: "2024-01-01T17:00:00.000Z" }
+                    // Client sendet: { startISO: "2024-01-01T15:00:00.000Z", endISO: "2024-01-01T17:00:00.000Z", endsNextDay: false }
                     const startTime = times.startISO.split('T')[1]; // z.B. "15:00:00.000Z"
                     const endTime = times.endISO.split('T')[1];
 
                     const startDateTime = `${eventDate}T${startTime}`;
-                    const endDateTime = `${eventDate}T${endTime}`;
+                    
+                    // Bei Terminen über Mitternacht: Enddatum auf nächsten Tag setzen
+                    let endEventDate = eventDate;
+                    if (times.endsNextDay) {
+                        const nextDay = new Date(d);
+                        nextDay.setDate(nextDay.getDate() + 1);
+                        const nextYear = nextDay.getFullYear();
+                        const nextMonth = String(nextDay.getMonth() + 1).padStart(2, '0');
+                        const nextDayNum = String(nextDay.getDate()).padStart(2, '0');
+                        endEventDate = `${nextYear}-${nextMonth}-${nextDayNum}`;
+                    }
+                    const endDateTime = `${endEventDate}T${endTime}`;
 
                     events.push({
                         title,

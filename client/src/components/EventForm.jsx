@@ -81,11 +81,15 @@ function EventForm({ event, onClose, onSave }) {
                 for (const [dayKey, times] of Object.entries(selectedDays)) {
                     // Dummy-Datum für Zeitkonvertierung (wird auf dem Server ersetzt)
                     const dummyDate = '2024-01-01'
+                    const nextDay = '2024-01-02'
                     const startDT = new Date(`${dummyDate}T${times.start}`)
-                    const endDT = new Date(`${dummyDate}T${times.end}`)
+                    // Wenn Endzeit vor Startzeit liegt (z.B. 23:00-01:00), endet der Termin am nächsten Tag
+                    const endsNextDay = times.end < times.start
+                    const endDT = new Date(`${endsNextDay ? nextDay : dummyDate}T${times.end}`)
                     convertedDays[dayKey] = {
                         startISO: startDT.toISOString(),
-                        endISO: endDT.toISOString()
+                        endISO: endDT.toISOString(),
+                        endsNextDay: endsNextDay
                     }
                 }
 
