@@ -99,16 +99,25 @@ function Calendar() {
                         }}
                         dayMaxEvents={4}
                         moreLinkText={(num) => `+${num} mehr`}
-                        eventContent={(eventInfo) => (
-                            <div className="p-1 overflow-hidden">
-                                <div className="font-semibold text-xs">
-                                    {eventInfo.timeText}
+                        eventContent={(eventInfo) => {
+                            const start = eventInfo.event.start
+                            const end = eventInfo.event.end
+                            const formatT = (d) => d ? d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) : ''
+                            const startTime = formatT(start)
+                            const endTime = formatT(end)
+                            const timeRange = endTime ? `${startTime} - ${endTime}` : startTime
+                            
+                            return (
+                                <div className="p-1 overflow-hidden">
+                                    <div className="font-semibold text-xs">
+                                        {timeRange}
+                                    </div>
+                                    <div className="text-xs truncate">
+                                        {eventInfo.event.title}
+                                    </div>
                                 </div>
-                                <div className="text-xs truncate">
-                                    {eventInfo.event.title}
-                                </div>
-                            </div>
-                        )}
+                            )
+                        }}
                     />
                 )}
             </div>
